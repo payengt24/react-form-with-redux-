@@ -8,7 +8,9 @@ class SnackForm extends Component {
 
         //Local state keeps track of user input
         this.state = {
+            name: '',
             newSnack: '',
+            
 
         }
     }
@@ -21,9 +23,17 @@ class SnackForm extends Component {
         });
     }
 
+    handleNameChange= (event) => {
+        this.setState({
+            name: event.target.value,
+        })
+    }
+
+
+
     sendSnackToRedux = () => {
 
-        const action = { type: 'ADD_SNACK', payload: this.state.newSnack };
+        const action = { type: 'ADD_SNACK', payload: this.state };
         this.props.dispatch(action);
 
     }
@@ -33,7 +43,8 @@ class SnackForm extends Component {
             <div>
 
                 <h3>Snack</h3>
-                <input onChange={this.handleSnackChange} value={this.state.newSnack} />
+                <input placeholder= "Name" onChange={this.handleNameChange} value={this.state.name} />
+                <input placeholder= "Snack" onChange={this.handleSnackChange} value={this.state.newSnack} />
                 <button onClick={this.sendSnackToRedux}>Submit</button>
 
             </div>

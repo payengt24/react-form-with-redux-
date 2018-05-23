@@ -23,7 +23,7 @@ class SnackList extends Component {
                     {
 
                         this.props.reduxState.snackReducer.map((snack, i) => <li key={i}>
-                            {snack}
+                            {snack.name},  {snack.newSnack}
                         </li>)
                     }
 
